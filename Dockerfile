@@ -13,6 +13,14 @@ RUN apt-get update && apt-get install -y \
 # instead of reinstalling everything on every build, making rebuilds
 # much faster during development.
 COPY requirements.txt .
+
+# Install CPU-only torch/torchvision first, from PyTorch's dedicated
+# CPU wheel index - this avoids pulling the CUDA build (2-3GB) since
+# this container only runs inference, never training, and most
+# deployment platforms don't have GPUs anyway.
+RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# Install everything else normally
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Now copy the actual application code
