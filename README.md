@@ -81,7 +81,7 @@ plant-disease-classifier/
 ### Option A: Run the API with Docker (recommended)
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/plant-disease-classifier.git
+git clone https://github.com/ameerhamza18/plant-disease-classifier.git
 cd plant-disease-classifier
 docker build -t plant-disease-classifier .
 docker run -p 8000:8000 plant-disease-classifier
@@ -185,4 +185,5 @@ Unit tests cover model output shapes, correct freeze/unfreeze behavior of transf
 
 ## 👤 Author
 
-[Ameer Hamza] 
+**Ameer Hamza**  
+[LinkedIn](www.linkedin.com/in/ameer-hamza-8990953bb) • [GitHub](https://github.com/ameerhamza18) 
