@@ -7,5 +7,6 @@ data/processed/*
 !data/processed/.gitkeep
 models/*
 !models/.gitkeep
+!models/best_model.pt
 experiments/mlruns/
 .env

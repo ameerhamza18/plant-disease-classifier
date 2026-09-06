@@ -19,6 +19,6 @@ training:
   scheduler: step
   device: cuda
 paths:
-  checkpoint_dir: /content/drive/MyDrive/plant-disease-classifier/models
+  checkpoint_dir: models
   mlflow_tracking_dir: /content/drive/MyDrive/plant-disease-classifier/experiments/mlruns
 seed: 42
