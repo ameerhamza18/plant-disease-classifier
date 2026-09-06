@@ -186,4 +186,4 @@ Unit tests cover model output shapes, correct freeze/unfreeze behavior of transf
 ## 👤 Author
 
 **Ameer Hamza**  
-[LinkedIn](www.linkedin.com/in/ameer-hamza-8990953bb) • [GitHub](https://github.com/ameerhamza18) 
+[LinkedIn](https://www.linkedin.com/in/ameer-hamza-8990953bb) • [GitHub](https://github.com/ameerhamza18) 
