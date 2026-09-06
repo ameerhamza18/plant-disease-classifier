@@ -97,7 +97,7 @@ def main():
     scheduler = StepLR(optimizer, step_size=5, gamma=0.1)
 
     # MLflow setup
-    mlflow.set_tracking_uri(f"file:{config['paths']['mlflow_tracking_dir']}")
+    mlflow.set_tracking_uri(f"sqlite:///{config['paths']['mlflow_tracking_dir']}/mlflow.db")
     mlflow.set_experiment("plant-disease-classifier")
 
     checkpoint_dir = config["paths"]["checkpoint_dir"]
