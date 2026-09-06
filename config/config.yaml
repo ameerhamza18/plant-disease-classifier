@@ -1,0 +1,28 @@
+data:
+  raw_dir: "/content/drive/MyDrive/plant-disease-classifier/data/raw"
+  processed_dir: "/content/drive/MyDrive/plant-disease-classifier/data/processed"
+  image_size: 224
+  batch_size: 32
+  num_workers: 2
+  val_split: 0.15
+  test_split: 0.15
+
+model:
+  architecture: "resnet18"
+  pretrained: true
+  num_classes: 15
+  dropout: 0.3
+
+training:
+  epochs: 15
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  optimizer: "adam"
+  scheduler: "step"
+  device: "cuda"
+
+paths:
+  checkpoint_dir: "/content/drive/MyDrive/plant-disease-classifier/models"
+  mlflow_tracking_dir: "/content/drive/MyDrive/plant-disease-classifier/experiments/mlruns"
+
+seed: 42
