@@ -2,8 +2,9 @@
 import yaml
 import torch
 import torch.nn as nn
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
 import numpy as np
+import matplotlib.pyplot as plt
 
 from src.dataset import get_dataloaders
 from src.transforms import get_train_transform, get_eval_transform
@@ -30,6 +31,24 @@ def evaluate_on_test(model, test_loader, device):
             all_labels.extend(labels.cpu().numpy())
 
     return np.array(all_labels), np.array(all_preds)
+
+
+def plot_confusion_matrix(y_true, y_pred, class_names, save_path):
+    """
+    Saves a confusion matrix heatmap. Because there are 38 classes,
+    we skip numeric annotations (would be unreadable) and just show
+    the color-coded matrix with class names on the axes.
+    """
+    cm = confusion_matrix(y_true, y_pred)
+
+    fig, ax = plt.subplots(figsize=(20, 20))
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=class_names)
+    disp.plot(ax=ax, xticks_rotation=90, colorbar=True, include_values=False, cmap="Blues")
+    plt.title("Confusion Matrix - Test Set")
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150)
+    plt.close()
+    print(f"Confusion matrix saved to {save_path}")
 
 
 def main():
@@ -71,6 +90,11 @@ def main():
         f.write(report)
 
     print("Report saved to experiments/test_classification_report.txt")
+
+    plot_confusion_matrix(
+        y_true, y_pred, class_names,
+        save_path="experiments/confusion_matrix.png"
+    )
 
 
 if __name__ == "__main__":
